@@ -1,2 +1,136 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Queries />
+<Queries>
+  <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Alle Klassen kleiner als 220 LOC</Name>
+warnif count > 0 
+from t in JustMyCode.Types
+where t.NbLinesOfCode > 2
+select new{t, t.NbLinesOfCode, Severity = Severity.High, Debt = 10.ToMinutes().ToDebt()}
+]]></Query>
+  <Group Name="Namensmuster" Active="True" ShownInReport="False">
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <TrendMetric Name="Grad Musterkonsistenz" Unit="%" />  
+
+// #### BLACKLISTING
+let blacklistedAssemblies = new string[]
+{
+ 
+}
+let blacklistNamespaceSuffix = new string[]{"DataClasses"}
+let blacklistNamespacePrefix = new string[]{}
+
+let typesFiltered = JustMyCode.Types
+                    .Where(t => !blacklistedAssemblies.Contains(t.ParentAssembly.Name))
+                    .Where(t => !t.IsGeneratedByCompiler)
+                    .Where(t => blacklistNamespaceSuffix.All(bns => !t.ParentNamespace.Name.EndsWith(bns)))
+                    .Where(t => blacklistNamespacePrefix.All(bns => !t.ParentNamespace.Name.StartsWith(bns)))
+
+// #### NAMENSMUSTER
+let namePatterns = new string[] 
+{
+ "Manager",
+ "Repository",
+ "Parser",
+ "Reader",
+ "PersonDisplayCommands",
+
+ "Program",
+}
+
+// #### ABFRAGE
+let typesFollowingPatterns = typesFiltered.Where(t => namePatterns.Any(np => t.SimpleName.EndsWith(np)))
+let typesNotFollowingPatterns = typesFiltered.Where(t => !namePatterns.Any(np => t.SimpleName.EndsWith(np)))
+select 100d * typesFollowingPatterns.Count() / typesFiltered.Count()
+
+
+]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Klassen ohne Namensmuster</Name>
+warnif count > 0
+// #### BLACKLISTING
+let blacklistedAssemblies = new string[]
+{
+}
+let blacklistNamespaceSuffix = new string[]{"DataClasses"}
+let blacklistNamespacePrefix = new string[]{}
+
+let typesFiltered = JustMyCode.Types
+                    .Where(t => !blacklistedAssemblies.Contains(t.ParentAssembly.Name))
+                    .Where(t => !t.IsGeneratedByCompiler)
+                    .Where(t => blacklistNamespaceSuffix.All(bns => !t.ParentNamespace.Name.EndsWith(bns)))
+                    .Where(t => blacklistNamespacePrefix.All(bns => !t.ParentNamespace.Name.StartsWith(bns)))
+
+// #### NAMENSMUSTER
+let namePatterns = new string[] 
+{
+ "Manager",
+ "Repository",
+ "Parser",
+ "Reader",
+ "PersonDisplayCommands",
+
+ "Program",
+ 
+}
+
+// #### ABFRAGE
+from t in typesFiltered
+where !namePatterns.Any(np => t.SimpleName.EndsWith(np))
+select new { t }
+]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Verstöße Namensmuster Manager</Name>
+warnif count > 0
+// #### BLACKLISTING
+let blacklistedAssemblies = new string[]
+{
+
+}
+let blacklistNamespaceSuffix = new string[]{}
+let blacklistNamespacePrefix = new string[]{}
+
+let typesFiltered = JustMyCode.Types
+                    .Where(t => !blacklistedAssemblies.Contains(t.ParentAssembly.Name))
+                    .Where(t => !t.IsGeneratedByCompiler)
+                    .Where(t => blacklistNamespaceSuffix.All(bns => !t.ParentNamespace.Name.EndsWith(bns)))
+                    .Where(t => blacklistNamespacePrefix.All(bns => !t.ParentNamespace.Name.StartsWith(bns))) 
+
+let managers = typesFiltered.Where(t => t.SimpleName.EndsWith("Manager"))
+let allowedMethods = new string[]{"Add", "Remove", "Update"}
+let allowedMethodPrefixes = new string[]{"Get","Is","Are"}
+
+from t in managers
+let methods = t.Methods
+               .Where(m => allowedMethods.All(am => m.SimpleName.Replace("Async","") != am)  // Muss wie eine allowedMethod heißen
+                        && allowedMethodPrefixes.All(mp => !m.SimpleName.StartsWith(mp)))    // oder mit einem Prefix beginnen
+where methods.Count() > 0
+select new { t, methods }
+
+]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Verstöße Namensmuster Repository</Name>
+warnif count > 0
+// #### BLACKLISTING
+let blacklistedAssemblies = new string[]
+{
+
+}
+let blacklistNamespaceSuffix = new string[]{}
+let blacklistNamespacePrefix = new string[]{}
+
+let typesFiltered = JustMyCode.Types
+                    .Where(t => !blacklistedAssemblies.Contains(t.ParentAssembly.Name))
+                    .Where(t => !t.IsGeneratedByCompiler)
+                    .Where(t => blacklistNamespaceSuffix.All(bns => !t.ParentNamespace.Name.EndsWith(bns)))
+                    .Where(t => blacklistNamespacePrefix.All(bns => !t.ParentNamespace.Name.StartsWith(bns))) 
+
+let manager = typesFiltered.Where(t => t.SimpleName.EndsWith("Repository"))
+let allowedMethods = new string[]{"Insert", "Delete", "Update", "Query"}
+let allowedMethodPrefixes = new string[]{}
+
+from t in manager
+let methods = t.Methods
+               .Where(m => allowedMethods.All(am => m.SimpleName.Replace("Async","") != am)  // Muss wie eine allowedMethod heißen
+                        && allowedMethodPrefixes.All(mp => !m.SimpleName.StartsWith(mp)))    // oder mit einem Prefix beginnen
+where methods.Count() > 0
+select new { t, methods }
+
+
+]]></Query>
+  </Group>
+</Queries>

@@ -1,6 +1,9 @@
-﻿namespace ConsoleClient;
+﻿using DavidTielke.PersonManagerApp.CrossCutting.DataClasses;
+using DavidTielke.PersonManagerApp.Data.DataStoring;
 
-class PersonManager
+namespace DavidTielke.PersonManagerApp.Logic.PersonManagement;
+
+public class PersonManager
 {
     private readonly PersonRepository _personRepository;
 
@@ -15,6 +18,11 @@ class PersonManager
             .Query()
             .Where(p => p.Age >= 18);
         return query;
+    }
+
+    public Person Copy()
+    {
+        return default;
     }
     public IQueryable<Person> GetAllChildren()
     {

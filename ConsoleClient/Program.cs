@@ -1,4 +1,4 @@
-﻿namespace ConsoleClient
+﻿namespace DavidTielke.PersonManagerApp.UI.ConsoleClient
 {
     internal class Program
     {

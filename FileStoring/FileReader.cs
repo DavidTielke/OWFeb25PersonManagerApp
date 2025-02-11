@@ -1,6 +1,6 @@
-﻿namespace ConsoleClient;
+﻿namespace DavidTielke.PersonManagerApp.Data.FileStoring;
 
-class FileReader
+public class FileReader
 {
     public IEnumerable<string> ReadLines(string path)
     {

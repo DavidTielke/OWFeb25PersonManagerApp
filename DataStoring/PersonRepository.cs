@@ -1,6 +1,9 @@
-﻿namespace ConsoleClient;
+﻿using DavidTielke.PersonManagerApp.CrossCutting.DataClasses;
+using DavidTielke.PersonManagerApp.Data.FileStoring;
 
-class PersonRepository
+namespace DavidTielke.PersonManagerApp.Data.DataStoring;
+
+public class PersonRepository
 {
     private readonly PersonParser _personParser;
     private readonly FileReader _fileReader;

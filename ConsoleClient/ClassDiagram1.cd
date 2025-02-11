@@ -1,56 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ConsoleClient.Person">
-    <Position X="10" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Person.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConsoleClient.FileReader">
-    <Position X="4.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>FileReader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConsoleClient.PersonParser">
-    <Position X="11" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PersonParser.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConsoleClient.PersonRepository">
-    <Position X="7.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAAIA=</HashCode>
-      <FileName>PersonRepository.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_fileReader" />
-      <Field Name="_personParser" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="ConsoleClient.PersonManager">
-    <Position X="7.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAABAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>PersonManager.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_personRepository" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="ConsoleClient.PersonDisplayCommands">
+  <Class Name="DavidTielke.PersonManagerApp.UI.ConsoleClient.PersonDisplayCommands">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAAAAAAACAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>PersonDisplayCommands.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_personManager" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

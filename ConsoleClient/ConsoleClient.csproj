@@ -5,12 +5,21 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <RootNamespace>DavidTielke.PersonManagerApp.UI.ConsoleClient</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <None Update="data.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataClasses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PersonManagement\PersonManagement.csproj" />
   </ItemGroup>
 
 </Project>

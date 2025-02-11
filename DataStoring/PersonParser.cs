@@ -1,6 +1,8 @@
-﻿namespace ConsoleClient;
+﻿using DavidTielke.PersonManagerApp.CrossCutting.DataClasses;
 
-class PersonParser
+namespace DavidTielke.PersonManagerApp.Data.DataStoring;
+
+public class PersonParser
 {
     public Person Parse(string dataLine)
     {
