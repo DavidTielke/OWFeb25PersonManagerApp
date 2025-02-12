@@ -6,6 +6,22 @@ from t in JustMyCode.Types
 where t.NbLinesOfCode > 2
 select new{t, t.NbLinesOfCode, Severity = Severity.High, Debt = 10.ToMinutes().ToDebt()}
 ]]></Query>
+  <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>All management classes are decoupled</Name>
+warnif count > 0 
+
+let blacklistClasses = new string[]{"Program","ServiceProviderFactory"}
+
+let managementClasses = JustMyCode.Types.Where(t => !blacklistClasses.Any(bc => t.SimpleName == bc))
+from t in managementClasses
+
+let typesUsedNotContracts = t.TypesUsed.Where(t1 =>    !t1.IsThirdParty 
+                                                    && !t1.IsInterface
+                                                    && !t1.IsGeneratedByCompiler
+                                                    && !t1.ParentNamespace.NameLike("DataClasses"))
+
+where typesUsedNotContracts.Any()
+
+select new { t, typesUsedNotContracts }]]></Query>
   <Group Name="Namensmuster" Active="True" ShownInReport="False">
     <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <TrendMetric Name="Grad Musterkonsistenz" Unit="%" />  
 

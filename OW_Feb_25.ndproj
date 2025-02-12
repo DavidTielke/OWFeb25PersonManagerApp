@@ -57,6 +57,8 @@
   <RuleFiles>
     <RuleFile Active="True" Path=".\NdepndRuleFile.ndrules" />
     <RuleFile Active="True" Path="..\..\..\..\OneDrive\david-tielke.de\NDepend Regeln\NHRules.ndrules" />
+    <RuleFile Active="True" Path="..\..\..\..\OneDrive\david-tielke.de\Demos\Richtlinien\Kodierrichtlinie_V11.ndrules" />
+    <RuleFile Active="True" Path="..\..\InfoLink Design\PersonManagerApp\MyRules.ndrules" />
   </RuleFiles>
   <GraphFiles />
   <ProjectRules AreActive="True" QueryPersistenceKind="PersistOnlyQueryIdForUntouchedQueries" />

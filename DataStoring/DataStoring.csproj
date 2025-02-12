@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataClasses\DataClasses.csproj" />
+    <ProjectReference Include="..\DataStoring.Contract\DataStoring.Contract.csproj" />
     <ProjectReference Include="..\FileStoring\FileStoring.csproj" />
   </ItemGroup>
 
