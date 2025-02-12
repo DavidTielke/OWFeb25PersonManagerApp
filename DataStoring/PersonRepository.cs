@@ -3,15 +3,15 @@ using DavidTielke.PersonManagerApp.Data.FileStoring;
 
 namespace DavidTielke.PersonManagerApp.Data.DataStoring;
 
-public class PersonRepository
+public class PersonRepository : IPersonRepository
 {
-    private readonly PersonParser _personParser;
-    private readonly FileReader _fileReader;
+    private readonly IPersonParser _personParser;
+    private readonly IFileReader _fileReader;
 
-    public PersonRepository()
+    public PersonRepository(IPersonParser personParser, IFileReader fileReader)
     {
-        _personParser = new PersonParser();
-        _fileReader = new FileReader();
+        _personParser = personParser;
+        _fileReader = fileReader;
     }
 
     public IQueryable<Person> Query()

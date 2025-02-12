@@ -1,6 +1,6 @@
 ﻿namespace DavidTielke.PersonManagerApp.Data.FileStoring;
 
-public class FileReader
+public class FileReader : IFileReader
 {
     public IEnumerable<string> ReadLines(string path)
     {

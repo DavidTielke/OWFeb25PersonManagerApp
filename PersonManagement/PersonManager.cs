@@ -3,13 +3,13 @@ using DavidTielke.PersonManagerApp.Data.DataStoring;
 
 namespace DavidTielke.PersonManagerApp.Logic.PersonManagement;
 
-public class PersonManager
+public class PersonManager : IPersonManager
 {
-    private readonly PersonRepository _personRepository;
+    private readonly IPersonRepository _personRepository;
 
-    public PersonManager()
+    public PersonManager(IPersonRepository personRepository)
     {
-        _personRepository = new PersonRepository();
+        _personRepository = personRepository;
     }
 
     public IQueryable<Person> GetAllAdults()
@@ -20,10 +20,6 @@ public class PersonManager
         return query;
     }
 
-    public Person Copy()
-    {
-        return default;
-    }
     public IQueryable<Person> GetAllChildren()
     {
         var query = _personRepository

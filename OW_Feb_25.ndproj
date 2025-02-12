@@ -59,7 +59,7 @@
     <RuleFile Active="True" Path="..\..\..\..\OneDrive\david-tielke.de\NDepend Regeln\NHRules.ndrules" />
   </RuleFiles>
   <GraphFiles />
-  <ProjectRules AreActive="False" QueryPersistenceKind="PersistOnlyQueryIdForUntouchedQueries" />
+  <ProjectRules AreActive="True" QueryPersistenceKind="PersistOnlyQueryIdForUntouchedQueries" />
   <ProjectDebtSettings DebtSettingsStorage="0" SettingsFilePath="">
     <DebtSettings>
       <DebtFactor>1</DebtFactor>

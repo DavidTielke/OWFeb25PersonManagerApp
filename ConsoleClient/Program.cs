@@ -1,10 +1,18 @@
-﻿namespace DavidTielke.PersonManagerApp.UI.ConsoleClient
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace DavidTielke.PersonManagerApp.UI.ConsoleClient
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var displayCommands = new PersonDisplayCommands();
+            var collection = new ServiceCollectionFactory().Create();
+
+            collection.AddTransient<IPersonDisplayCommands, PersonDisplayCommands>();
+
+            var provider = collection.BuildServiceProvider();
+
+            var displayCommands = provider.GetRequiredService<IPersonDisplayCommands>();
 
             displayCommands.DisplayAllAdults();
 

@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStoring", "FileStoring\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonManagement", "PersonManagement\PersonManagement.csproj", "{FB9AD5D7-4D44-48FE-8EF4-696D3EA78596}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{157F5735-D971-4831-BFC9-C557C4ED6BA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mappings", "Mappings\Mappings.csproj", "{1D444C30-6BB8-4A5E-86DC-F20F402A6C02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{FB9AD5D7-4D44-48FE-8EF4-696D3EA78596}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB9AD5D7-4D44-48FE-8EF4-696D3EA78596}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB9AD5D7-4D44-48FE-8EF4-696D3EA78596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D444C30-6BB8-4A5E-86DC-F20F402A6C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D444C30-6BB8-4A5E-86DC-F20F402A6C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D444C30-6BB8-4A5E-86DC-F20F402A6C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D444C30-6BB8-4A5E-86DC-F20F402A6C02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,5 +71,6 @@ Global
 		{FABDD729-FED8-40B1-B8B4-F7CF2395F3DF} = {E6C6ADDC-CB07-4685-A467-E460ABA7C668}
 		{302212F1-977D-4B82-BCE7-944D3DD64526} = {E6C6ADDC-CB07-4685-A467-E460ABA7C668}
 		{FB9AD5D7-4D44-48FE-8EF4-696D3EA78596} = {407F8E78-C258-4285-A8D3-E68829B0AFEE}
+		{1D444C30-6BB8-4A5E-86DC-F20F402A6C02} = {157F5735-D971-4831-BFC9-C557C4ED6BA6}
 	EndGlobalSection
 EndGlobal
